@@ -1,5 +1,6 @@
 import { EntityNames } from '@common/enum/entity.enum';
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Wallet } from '@entities/wallet.entity';
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity(EntityNames.User)
 export class User {
@@ -17,4 +18,7 @@ export class User {
 
   @CreateDateColumn()
   created_at: Date
+
+  @OneToMany(() => Wallet, (Wallet) => Wallet.user)
+  transaction: Wallet[]
 }
