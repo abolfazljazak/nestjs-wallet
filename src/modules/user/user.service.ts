@@ -16,14 +16,13 @@ export class UserService {
     return user;
   }
 
-  async create(createDto: CreateUserDto) {
-    const { mobile, fullname, amount } = createDto;
+  async createUser(createDto: CreateUserDto) {
+    const { mobile, fullname } = createDto;
     let user = await this.userRepository.findOneBy({ mobile });
     if (!user) {
       user = this.userRepository.create({
         mobile,
         fullname,
-        balance: amount,
       });
       await this.userRepository.save(user);
     }
