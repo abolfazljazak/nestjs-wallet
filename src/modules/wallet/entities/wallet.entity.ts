@@ -8,7 +8,6 @@ import {
 } from 'typeorm';
 import { WalletType } from '../enum/wallet.enum';
 import { User } from '@entities/user.entity';
-import { userInfo } from 'os';
 
 @Entity(EntityNames.Wallet)
 export class Wallet {
@@ -20,6 +19,9 @@ export class Wallet {
 
   @Column()
   invoice_number: string;
+
+  @Column({ type: 'numeric' })
+  amount: number;
 
   @CreateDateColumn()
   created_at: Date;
