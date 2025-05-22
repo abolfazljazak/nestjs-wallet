@@ -23,6 +23,12 @@ export class Wallet {
   @Column({ type: 'numeric' })
   amount: number;
 
+  @Column()
+  reason: string;
+
+  @Column()
+  productId: number;
+
   @CreateDateColumn()
   created_at: Date;
 
